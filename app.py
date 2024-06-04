@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request,jsonify
 from pymongo import MongoClient
+from flask_cors import CORS
 from datetime import datetime, timedelta
 from collections import defaultdict
 import os
 app = Flask(__name__)
+CORS(app)
 
 client = MongoClient("mongodb+srv://pradeepmajji42:Pradeep123@cluster0.mb8pytv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["dashboard"]
