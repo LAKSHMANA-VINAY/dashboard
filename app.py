@@ -2,7 +2,7 @@ from flask import Flask, render_template, request,jsonify
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 from collections import defaultdict
-
+import os
 app = Flask(__name__)
 
 client = MongoClient("mongodb+srv://pradeepmajji42:Pradeep123@cluster0.mb8pytv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -73,4 +73,5 @@ def retrieve():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
