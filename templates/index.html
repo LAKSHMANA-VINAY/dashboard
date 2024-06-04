@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Form</h2>
+        <form action="/submit" method="post">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount" required>
+
+            <label for="option">Option:</label>
+            <select id="option" name="option" onchange="toggleDateField()">
+                <option value="pay_now">Pay Now</option>
+                <option value="pay_later">Pay Later</option>
+            </select>
+
+            <div id="dateField" style="display: none;">
+                <label for="date">Select Date to Pay:</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function toggleDateField() {
+            var option = document.getElementById("option").value;
+            var dateField = document.getElementById("dateField");
+
+            if (option === "pay_later") {
+                dateField.style.display = "block";
+            } else {
+                dateField.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
